@@ -6,7 +6,7 @@ Requires at least: 5.9
 License: GPL2
 Requires PHP: 7.4
 Tested up to: 6.6
-Stable tag: 7.1.4
+Stable tag: 7.2.0
 
 Configure your Cookie Banner, Cookie Consent and Cookie Policy with our Wizard and Cookie Scan.
 
@@ -31,12 +31,12 @@ https://www.youtube.com/watch?v=JJzOzNAd5Bw&ab_channel=ReallySimplePlugins
 
 * Automatically configures you website based on wizard questions, WordPress scans and dedicated service and plugin integrations.
 * Blocks 3rd party cookies like Google Maps, Facebook, Instagram, AdSense, Hubspot, Recaptcha, Twitter, ActiveCampaign, and many more.
-* Custom integrations for plugins, themes and services are automatically detected. 
+* Custom integrations for plugins, themes and services are automatically detected.
 * Blocks iFrames, like YouTube, Vimeo, Dailymotion embedded videos and Social iFrames e.g. Instagram, Facebook et al.
 * Shows placeholders for blocked iFrames. Stills from videos and individual placeholders per (social) service.
 * Script Center to control scripts, iFrames and plugins per category or service. With dependency functionality and placeholders.
 * Proof of Consent: User consent registration that respects the GDPR data minimization guideline.
-* Periodical Cookie Scan for changes in Cookies, Plugins and 3rd Party services. 
+* Periodical Cookie Scan for changes in Cookies, Plugins and 3rd Party services.
 * Automatically detects if you need a Cookie Notice (also called a Cookie Banner or Pop-Up).
 * Automatically anonymizes personal data for integrated statistics tools if needed.
 
@@ -110,13 +110,13 @@ Simultaneously select USA, Canada, United Kingdom, Australie, South Africa, Braz
 
 = Legal Documents =
 
-* Privacy statements (EU, CA, UK, AU, ZA, BR & USA). 
+* Privacy statements (EU, CA, UK, AU, ZA, BR & USA).
 * Cookie policy (EU, UK, CA, AU, ZA, BR & USA).
 * Impressum (Germany & Austria) & Imprint for world wide use.
 * Disclaimer
 * Terms & Conditions Integration
-* Processing agreements (EU, UK, CA, AU, ZA, BR & USA). 
-* Dataleak reporting tools (EU, UK, CA, AU, ZA, BR & USA). 
+* Processing agreements (EU, UK, CA, AU, ZA, BR & USA).
+* Dataleak reporting tools (EU, UK, CA, AU, ZA, BR & USA).
 * Supports CCPA Consent and Legal documents.
 * COPPA ready with Children's Privacy Policy (USA)
 * Children's Privacy Policy (UK,CA & AU)
@@ -159,9 +159,9 @@ For more information:
 Complianz maintains a continuously growing knowledgebase about GDPR, including subregions e.g. DSGVO and CNIL, CCPA, PIPEDA, COPPA, POPIA & other specific laws on [complianz.io](https://complianz.io)
 
 = Is my website GDPR, COPPA, CCPA, DSGVO, TTDSG, AVG, CNIL, UK-GDPR, PECR, CASL, LGPD, POPIA and/or PIPEDA compliant with this plugin? =
-We cannot guarantee compliance for your website. A correct configuration of this plugin by a website administrator is always required. 
+We cannot guarantee compliance for your website. A correct configuration of this plugin by a website administrator is always required.
 = When do I need a Cookie Notice? =
-Complianz | GDPR/CCPA Cookie Consent will determine this automatically based on the laws of the region or regions, where most of your visitors come from. 
+Complianz | GDPR/CCPA Cookie Consent will determine this automatically based on the laws of the region or regions, where most of your visitors come from.
 Regarding CCPA/CPRA, you always have to show which cookies you are using but there's no obligation in asking consent.
 = Do I always need a consent checkbox on contact forms? =
 Not always. The Complianz Privacy Suite Premium plugin can determine if you need this, based on your answers in the wizard. It mainly depends on the type of information and the reason why your visitor use the contact form.
@@ -185,6 +185,17 @@ The Brazilian General Data Protection Law is similar to the GDPR, the UK-GDPR it
 With some custom CSS this is possible, but we do not consider a cookie wall to be GDPR compliant, so it's not actively supported. We do, however, have the option to create a Soft Cookie Wall. Which blocks interaction with the website, but dismissing remains a possibility.
 
 == Changelog ==
+
+= 7.2.0 =
+* December 16th, 2024
+* Feature: Website Scan
+* Enhancement: Introduced the cmplz_after_css_generation hook to improve CSS file management
+* Enhancement: Language file updated
+* Fix: translations https://complianz.io/doing-it-wrong-notice
+
+= 7.1.5 =
+* November 13th, 2024
+* Fix: update bf dates
 
 = 7.1.4 =
 * October 28th, 2024
