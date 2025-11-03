@@ -6,7 +6,7 @@ Requires at least: 5.9
 License: GPL2
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 7.4.0.1
+Stable tag: 7.4.3
 
 Configure your Cookie Banner, Cookie Consent and Cookie Policy with our Wizard and Cookies Scan.
 
@@ -24,7 +24,7 @@ https://www.youtube.com/watch?v=JJzOzNAd5Bw&ab_channel=ReallySimplePlugins
 * Cookie Consent and Conditional Cookie Notice with Custom CSS and Customizable Templates. WCAG Level AA and ADA Compliant.
 * Banner Templates include: GDPR-friendly Cookie Wall - Accept/Dismiss - Consent per Category - Consent per Service
 * Banner Templates also include; Dismiss on scroll, time on page or both based on legislation
-* Cookie Banners and Legal Documents conform to WCAG 2.1 AA Accessibility Guidelines and ADA Compliance.
+* We aim to follow WCAG 2.1 AA guidelines and ADA best practices in the design of our cookie banners and legal documents to support accessibility.
 * No jQuery Dependency
 
 = Consent Management =
@@ -198,7 +198,35 @@ The Brazilian General Data Protection Law is similar to the GDPR, the UK-GDPR it
 With some custom CSS this is possible, but we do not consider a cookie wall to be GDPR compliant, so it's not actively supported. We do, however, have the option to create a Soft Cookie Wall. Which blocks interaction with the website, but dismissing remains a possibility.
 
 == Changelog ==
-= 7.4.0.1 = 
+= 7.4.3 =
+* October 30th, 2025
+* Enhancement: Added `cmplz_prevent_get_shortcode_page_id` filter to allow developers to prevent execution of `get_shortcode_page_id`.
+* Enhancement: Optimized DNSMPD export for large datasets.
+* Enhancement: Updated mPDF library for improved PHP compatibility (7.4 to 8.4)
+* Improvement: Updated services: Vimeo, X (Formerly Twitter), Linkedin. Added Snapchat.
+* Improvement: Added FunnelKit and updated Wp Google Maps integration.
+* Accessibility: Improved link semantics and aria-labels for “Read more” and cookie banner links
+* Fix: Correct typos and spelling errors.
+* Fix: Google Analytics, fixed "empty additional tag" issue.
+
+
+= 7.4.2 =
+* July 11th, 2025
+* Translations: Updated translations.
+* Accessibility: Improved cookie banner for better accessibility.
+* Fix: Backend not loading due to missing dependency on WordPress versions lower than 6.6.
+
+= 7.4.1 =
+* June 18th, 2025
+* New: Notifications system.
+* Update: Other plugins suggestion component.
+* Improvement: Website Scan, added site creation.
+* Improvement: Dailymotion integration.
+* Improvement: Google Recaptcha integration.
+* Improvement: Clarity integration.
+* Security update: Authenticated (Translator+) Stored XSS.
+
+= 7.4.0.1 =
 * April 14th, 2025
 * Improvement: Tested up to WordPress 6.8
 * Fix: Fixed missing "Details Per Purposes" section.

@@ -61,7 +61,8 @@
 #cmplz-manage-consent .cmplz-manage-consent.cmplz-dismissed {
   display: none;
 }
-#cmplz-manage-consent .cmplz-manage-consent:hover {
+#cmplz-manage-consent .cmplz-manage-consent:hover,
+#cmplz-manage-consent .cmplz-manage-consent:focus {
   animation: mc_slideIn 0.5s forwards;
   animation-delay: 0;
 }
@@ -242,9 +243,6 @@
   align-items: center;
   margin: 0;
 }
-.cmplz-cookiebanner .cmplz-categories .cmplz-category .cmplz-category-header .cmplz-banner-checkbox label > span {
-  display: none;
-}
 .cmplz-cookiebanner .cmplz-categories .cmplz-category .cmplz-category-header .cmplz-banner-checkbox input[data-category=cmplz_functional] {
   display: none;
 }
@@ -370,6 +368,14 @@
 .cmplz-cookiebanner .cmplz-links .cmplz-link.cmplz-read-more-purposes {
   display: none;
 }
+.cmplz-cookiebanner .cmplz-links ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: var(--cmplz_banner_margin);
+  justify-content: center;
+}
 /* The categories are also used on the cookie policy, so this needs to be outside the banner class */
 .cmplz-categories .cmplz-category .cmplz-description-statistics-anonymous {
   display: none;
@@ -377,4 +383,4 @@
 .cmplz-categories .cmplz-category .cmplz-description-statistics {
   display: block;
 }
-/*# sourceMappingURL=cookiebanner.css.map */
+/*# sourceMappingURL=../../css/cookiebanner.css.map */

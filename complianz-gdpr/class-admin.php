@@ -72,28 +72,6 @@ if ( ! class_exists( "cmplz_admin" ) ) {
 		}
 
 		/**
-		 * Check if current day falls within required date range.
-		 *
-		 * @return bool
-		 */
-
-		public function is_bf(){
-			if ( defined("cmplz_premium" ) ) {
-				return false;
-			}
-			$start_day = 25;
-			$end_day = 30;
-			$current_year = date("Y");//e.g. 2021
-			$current_month = date("n");//e.g. 3
-			$current_day = date("j");//e.g. 4
-
-			return $current_year == 2024
-				   && $current_month == 11
-				   && $current_day >= $start_day
-				   && $current_day <= $end_day;
-		}
-
-		/**
 		 * Hooked into ajax call to dismiss a warning
 		 * @hooked wp_ajax_cmplz_dismiss_warning
 		 */
@@ -345,7 +323,10 @@ if ( ! class_exists( "cmplz_admin" ) ) {
 						<?php
 							if (isset($warning['url'])) {
 								$target = strpos( $warning['url'], 'complianz.io' )!==false ? 'target="_blank"' : '';
-								?><a href="<?php echo esc_url_raw($warning['url'])?>" <?php echo $target?>><?php esc_html_e(__("Read more", "complianz-gdpr"))?></a><?php
+								$warning_title = isset($warning['title']) ? $warning['title'] : __('this topic', 'complianz-gdpr');
+								$link_text = cmplz_sprintf( __('Read more about %s', 'complianz-gdpr'), $warning_title );
+								$aria_label = cmplz_sprintf( __('Read more about %s', 'complianz-gdpr'), $warning_title );
+								?><a href="<?php echo esc_url_raw($warning['url'])?>" <?php echo $target?> aria-label="<?php echo esc_attr($aria_label); ?>"><?php echo $link_text; ?></a><?php
 							}
 						?>
 						</p>
@@ -405,9 +386,9 @@ if ( ! class_exists( "cmplz_admin" ) ) {
 
 				$warning_types = cmplz_load_warning_types();
 				if (empty($warning_types)) {
-
 					return [];
 				}
+
 
 				foreach ($warning_types as $id => $warning_type) {
 					$warning_types[$id] = wp_parse_args($warning_type, $warning_type_defaults );
@@ -517,13 +498,10 @@ if ( ! class_exists( "cmplz_admin" ) ) {
 			$completed = array();
 			$open = array();
 			$urgent = array();
-			$bf_notice = array();
 
 			if ( ! empty( $warnings ) ) {
 				foreach ( $warnings as $key => $warning ) {
-					if ( $key === 'bf-notice2023' ) {
-						$bf_notice[$key] = $warning;
-					} elseif ( isset($warning['status']) && $warning['status'] === 'urgent' ) {
+					if ( isset($warning['status']) && $warning['status'] === 'urgent' ) {
 						$urgent[$key] = $warning;
 					} elseif ( isset($warning['status']) && $warning['status'] === 'open' ) {
 						$open[$key] = $warning;
@@ -533,7 +511,7 @@ if ( ! class_exists( "cmplz_admin" ) ) {
 				}
 			}
 
-			return $bf_notice + $urgent + $open + $completed;
+			return $urgent + $open + $completed;
 		}
 
 		/**
