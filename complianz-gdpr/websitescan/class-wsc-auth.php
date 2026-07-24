@@ -568,7 +568,7 @@ if ( ! class_exists( 'cmplz_wsc_auth' ) ) {
 		/**
 		 * Website Scan Circuit Breaker
 		 *
-		 * This function checks if the Website scan endpoint accepts user signups and radar scans
+		 * This function checks if the Website scan endpoint accepts user signups and WSC scans
 		 * passing auth or scanner as $service.
 		 *
 		 * @param string $service The service to check | signup or scanner.

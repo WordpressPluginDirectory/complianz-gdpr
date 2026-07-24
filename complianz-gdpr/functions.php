@@ -912,16 +912,6 @@ if ( ! function_exists( 'cmplz_uses_statistics' ) ) {
 	}
 }
 
-if ( ! function_exists( 'cmplz_show_install_burst_warning' ) ) {
-	function cmplz_show_install_burst_warning() {
-		if ( cmplz_get_option('consent_for_anonymous_stats') === 'yes' && !defined( 'burst_version' ) ) {
-			return true;
-		}
-		return false;
-	}
-}
-
-
 if ( ! function_exists( 'cmplz_uses_only_functional_cookies' ) ) {
 	function cmplz_uses_only_functional_cookies() {
 		return COMPLIANZ::$banner_loader->uses_only_functional_cookies();
@@ -2839,7 +2829,8 @@ if ( ! function_exists( 'cmplz_sprintf' ) ) {
 	 */
 	function cmplz_sprintf(){
 		$args = func_get_args();
-		$count = substr_count($args[0], '%s');
+		preg_match_all( '/%(?:\d+\$)?s/', $args[0], $placeholder_matches );
+		$count      = count( $placeholder_matches[0] );
 		$args_count = count($args) - 1;
 		if ( $args_count === $count ){
 			return call_user_func_array('sprintf', $args);
@@ -2970,7 +2961,7 @@ if ( ! function_exists( 'cmplz_site_has_custom_post_types' ) ) {
 
 if ( ! function_exists( 'cmplz_site_has_high_post_count' ) ) {
 	/**
-	 * Check if the site has more than 200 published posts or pages.
+	 * Check whether the site exceeds the volume-upsell post/page threshold.
 	 * Stores two transients (TTL: DAY_IN_SECONDS):
 	 *   cmplz_scan_high_post_count — '1'/'0' boolean guard (avoids COUNT on every request).
 	 *   cmplz_scan_post_count      — raw integer count for the dynamic volume upsell title.
@@ -2990,7 +2981,8 @@ if ( ! function_exists( 'cmplz_site_has_high_post_count' ) ) {
 			 AND post_type IN ('post', 'page')"
 		);
 
-		$result = $count > 1000;
+		$threshold = 200;
+		$result    = $count > $threshold;
 		set_transient( 'cmplz_scan_high_post_count', $result ? '1' : '0', DAY_IN_SECONDS );
 		set_transient( 'cmplz_scan_post_count', $count, DAY_IN_SECONDS );
 

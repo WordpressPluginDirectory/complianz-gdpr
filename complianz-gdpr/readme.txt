@@ -6,7 +6,7 @@ Requires at least: 5.9
 License: GPL2
 Requires PHP: 7.4
 Tested up to: 7.0
-Stable tag: 7.5.0
+Stable tag: 7.5.1
 
 Configure your Cookie Banner, Cookie Consent and Cookie Policy with our Wizard and Cookies Scan.
 
@@ -198,6 +198,20 @@ The Brazilian General Data Protection Law is similar to the GDPR, the UK-GDPR it
 With some custom CSS this is possible, but we do not consider a cookie wall to be GDPR compliant, so it's not actively supported. We do, however, have the option to create a Soft Cookie Wall. Which blocks interaction with the website, but dismissing remains a possibility.
 
 == Changelog ==
+= 7.5.1 =
+* July 27th, 2026
+* Feature: Google Tag Gateway support — Consent Mode is now applied correctly when Google Analytics or Google Tag Manager loads through a first-party Tag Gateway URL.
+* Feature: Amazon consent signal integration — marketing consent is now passed to the Amazon ads library on consent and revoke.
+* Enhancement: WordPress 7.0 Interactivity API router navigation for the cookie banner is now an opt-in setting under Settings → General. When disabled (default), a compatibility fallback is used on all WordPress versions.
+* Enhancement: Removed the discontinued Burst Statistics integration and cross-promotion code.
+* Security: The premium upgrade installer now requires the install_plugins capability and only downloads packages from the official vendor API.
+* Fix: Fatal error "Class cmplz_wsc not found" during background Website Scan on sites without an active admin session (regression since 7.5.0).
+* Fix: Corrected lawful basis options for Brazil region, ensuring the privacy statement renders the selected basis accurately.
+* Fix: Cookie banner stylesheet and consent state were not restored after WordPress Interactivity API client-side navigation (WP 6.9+).
+* Fix: Cookie banner buttons could wrap text unexpectedly on narrow banners.
+* Fix: Improved keyboard focus trap handling in the cookie banner for better accessibility.
+* Fix: The website scan could write scanned page HTML into the statistics settings.
+
 = 7.5.0 =
 * June 17th, 2026
 * Feature: New Website Scan column in the post overview showing the scan status of each post.
