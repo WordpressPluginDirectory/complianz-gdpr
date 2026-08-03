@@ -331,8 +331,10 @@ if ( ! class_exists( 'cmplz_cookiebanner' ) ) {
 				// on some websites, the previous value seems to be cached. We try to catch that here.
 				// should be removed at some future point
 				if ( $fieldname === 'revoke' && is_serialized( $value ) ) {
-					$value = unserialize( $value );
-					$value = isset( $value['text'] ) ? $value['text'] : __( 'Manage consent', 'complianz-gdpr' );
+					// allowed_classes => false: decode legacy serialized arrays only, never
+					// instantiate objects — prevents PHP Object Injection from a poisoned column.
+					$value = unserialize( $value, array( 'allowed_classes' => false ) );
+					$value = is_array( $value ) && isset( $value['text'] ) ? $value['text'] : __( 'Manage consent', 'complianz-gdpr' );
 				}
 				if ( empty( $value ) && $set_defaults ) {
 					$value = $default;
@@ -350,7 +352,9 @@ if ( ! class_exists( 'cmplz_cookiebanner' ) ) {
 			} elseif ( $type === 'text_checkbox' || $type === 'colorpicker' || $type === 'borderradius' || $type === 'borderwidth' ) {
 				// array types
 				if ( is_serialized( $value ) ) {
-					$value = unserialize( $value );
+					// allowed_classes => false: decode legacy serialized arrays only, never
+					// instantiate objects — prevents PHP Object Injection from a poisoned column.
+					$value = unserialize( $value, array( 'allowed_classes' => false ) );
 					// code to prevent duplicate upgrades
 					$stop_check = false;
 					foreach ( $value as $key => $key_value ) {
@@ -1327,7 +1331,7 @@ if ( ! class_exists( 'cmplz_cookiebanner' ) ) {
 				$this->generate_css();
 			}
 
-			$store_consent         = cmplz_ab_testing_enabled() || cmplz_get_option( 'records_of_consent' ) === 'yes';
+			$store_consent         = cmplz_ab_testing_enabled() || cmplz_get_option( 'a_b_testing' ) || cmplz_get_option( 'records_of_consent' ) === 'yes';
 			$this->dismiss_timeout = $this->dismiss_on_timeout ? 1000 * $this->dismiss_timeout : false;
 			$upload_url            = is_ssl() ? str_replace( 'http://', 'https://', cmplz_upload_url() ) : cmplz_upload_url();
 			// check if the css file exists. if not, use default.

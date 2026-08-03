@@ -6,7 +6,7 @@ Requires at least: 5.9
 License: GPL2
 Requires PHP: 7.4
 Tested up to: 7.0
-Stable tag: 7.5.1
+Stable tag: 7.5.2
 
 Configure your Cookie Banner, Cookie Consent and Cookie Policy with our Wizard and Cookies Scan.
 
@@ -198,6 +198,12 @@ The Brazilian General Data Protection Law is similar to the GDPR, the UK-GDPR it
 With some custom CSS this is possible, but we do not consider a cookie wall to be GDPR compliant, so it's not actively supported. We do, however, have the option to create a Soft Cookie Wall. Which blocks interaction with the website, but dismissing remains a possibility.
 
 == Changelog ==
+= 7.5.2 =
+* August 3rd, 2026
+* Security: Fixed a PHP Object Injection vulnerability in the cookie banner settings.
+* Security: The consented-content REST endpoint no longer returns content of password-protected posts.
+* Security: Hardened the YouTube integration against SSRF — server-side fetches are restricted to YouTube hosts.
+
 = 7.5.1 =
 * July 27th, 2026
 * Feature: Google Tag Gateway support — Consent Mode is now applied correctly when Google Analytics or Google Tag Manager loads through a first-party Tag Gateway URL.
